@@ -1,0 +1,62 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 23531867: <hbclab1> in cluster <dcc> Done
+
+Job <hbclab1> was submitted from host <n-62-30-3> by user <s230274> in cluster <dcc> at Tue Jan  7 12:34:54 2025
+Job was executed on host(s) <n-62-21-76>, in queue <hpcintro>, as user <s230274> in cluster <dcc> at Tue Jan  7 12:34:55 2025
+</zhome/97/2/198344> was used as the home directory.
+</zhome/97/2/198344/hpc> was used as the working directory.
+Started at Tue Jan  7 12:34:55 2025
+Terminated at Tue Jan  7 12:36:31 2025
+Results reported at Tue Jan  7 12:36:31 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -J hbclab1
+#BSUB -o hbclab1_%J.out
+#BSUB -q hpcintro
+#BSUB -W 5
+#BSUB -R "rusage[mem=4GB]"
+#BSUB -M 5GB
+
+CC=${1-"gcc"}
+
+NPARTS="2000 3000 4000 5000 7500 10000 20000 40000 80000 200000 400000 800000 1200000 1600000 3000000"
+LOOPS=1000
+LOGEXT=$CC.dat
+
+/bin/rm -f aos.$LOGEXT soa.$LOGEXT
+for particles in $NPARTS
+do
+    ./aos.${CC} $LOOPS $particles | grep -v CPU >> aos.$LOGEXT
+    ./soa.${CC} $LOOPS $particles | grep -v CPU >> soa.$LOGEXT
+done
+
+# time to say 'Good bye' ;-)
+#
+exit 0
+
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   95.86 sec.
+    Max Memory :                                 36 MB
+    Average Memory :                             36.00 MB
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               4060.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                6
+    Run time :                                   96 sec.
+    Turnaround time :                            97 sec.
+
+The output (if any) is above this job summary.
+

@@ -11,7 +11,7 @@ distcheck(particle_t *p, int n) {
      */
     for(int i = 0; i < n; i++){
         dist += p[i].dist;
-        printf("distance %f",dist);
+        //printf("distance %f",dist);
     }
     return dist;
 }
@@ -25,7 +25,7 @@ distcheck(particle_t p, int n) {
      */
     for(int i = 0; i < n; i++) {
         dist += p.dist[i];
-        printf("distance %f",dist);
+        //printf("distance %f",dist);
     }
     return dist;
 }
