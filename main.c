@@ -103,7 +103,7 @@ main(int argc, char *argv[]) {
     mflops   = 1.0e-06 * nparts * loops;
     mf_dist  = DIST_FLOP  * mflops / te_dist;
     mf_check = CHECK_FLOP * mflops / te_check;
-    mf_main =  (DIST_FLOP + CHECK_FLOP) * mflops / te_main;
+    mf_main =  (DIST_FLOP + CHECK_FLOP) * mflops / te_main; 
 
 #ifndef DATA_ANALYSIS
 

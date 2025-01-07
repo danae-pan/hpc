@@ -1,7 +1,7 @@
 #!/bin/sh
 #BSUB -J hbclab1
 #BSUB -o hbclab1_%J.out
-#BSUB -q hpcintro
+#BSUB -q hpcintr
 #BSUB -W 5
 #BSUB -R "rusage[mem=4GB]"
 #BSUB -M 5GB
