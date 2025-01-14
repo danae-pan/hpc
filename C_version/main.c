@@ -29,6 +29,7 @@ main(int argc, char *argv[]) {
     }
     
     start_time = omp_get_wtime();
+    # pragma omp parallel
     mandel(width, height, image, max_iter);
     end_time = omp_get_wtime();
 
