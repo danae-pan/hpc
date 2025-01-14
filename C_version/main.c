@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <omp.h>
 #include "mandel.h"
 #include "writepng.h"
 
@@ -11,6 +12,8 @@ main(int argc, char *argv[]) {
     int   width, height;
     int	  max_iter;
     int   *image;
+
+    double start_time, end_time; 
 
     width    = 4601;
     height   = 4601;
@@ -24,10 +27,14 @@ main(int argc, char *argv[]) {
        fprintf(stderr, "memory allocation failed!\n");
        return(1);
     }
-
+    
+    start_time = omp_get_wtime();
     mandel(width, height, image, max_iter);
+    end_time = omp_get_wtime();
 
-    writepng("mandelbrot.png", image, width, height);
+    printf("Execution Time: %f seconds \n", end_time - start_time);
+
+    // writepng("mandelbrot.png", image, width, height);
 
     return(0);
 }
